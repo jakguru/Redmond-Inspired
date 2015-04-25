@@ -193,7 +193,7 @@
 		$html = '<style type="text/css" id="custom-background-css">' . "\r\n";
 		$html .= '	body.custom-background {' . trim( $style ) . '}' . "\r\n";
 		$html .= '</style>' . "\r\n";
-		print wp_kses( $html , array( 'style' ) );
+		print $html;
 	}
 
 	function redmond_get_menu_as_array( $menu_name ) {
@@ -524,7 +524,7 @@
 		}
 		$html .= '</table>' . "\r\n";
 		if ( true == $print ) {
-			print wp_kses( $html , array( 'table', 'tr', 'td', 'a' => array( 'href', 'data-type', 'title', 'data-post-id', 'data-category-id' ) ), 'img' );
+			print $html;
 		}
 		else {
 			return $html;

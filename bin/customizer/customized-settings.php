@@ -125,8 +125,8 @@
 
 	function redmond_load_customizer_settings( $wp_customize ) {
 		global $redmond_customizer_settings;
-		foreach ($redmond_customizer_settings as $setting) {
-			$wp_customize->add_setting( $setting['name'] , array( 'default' => $setting['default'] , 'transport' => $setting['transport'] ) );
+		foreach ( $redmond_customizer_settings as $setting ) {
+			$wp_customize->add_setting( $setting['name'], array( 'default' => $setting['default'], 'transport' => $setting['transport'] ) );
 		}
 	}
 ?>

@@ -23,29 +23,29 @@
 		'WP_Rewrite',
 		'WP_Ajax_Response',
 	);
-	foreach ($tracedClasses as $class) {
-		if( class_exists( $class ) ) {
-			$methods = get_class_methods($class);
-			foreach ($methods as $method) {
-				redmond_nr_function('newrelic_add_custom_tracer',$class.'::'.$method);
+	foreach ( $tracedClasses as $class ) {
+		if ( class_exists( $class ) ) {
+			$methods = get_class_methods( $class );
+			foreach ( $methods as $method ) {
+				redmond_nr_function( 'newrelic_add_custom_tracer', $class.'::'.$method );
 			}
 		}
 	}
-	foreach ($tracedFunctions as $function) {
-		if( function_exists( $function ) ) {
-			redmond_nr_function('newrelic_add_custom_tracer',$function);
+	foreach ( $tracedFunctions as $function ) {
+		if ( function_exists( $function ) ) {
+			redmond_nr_function( 'newrelic_add_custom_tracer', $function );
 		}
 	}
 
 	function redmond_new_relic_timing_header() {
-		if( extension_loaded('newrelic') ) {
-			print newrelic_get_browser_timing_header( TRUE );
+		if ( extension_loaded( 'newrelic' ) ) {
+			print newrelic_get_browser_timing_header( true );
 		}
 	}
 
 	function redmond_new_relic_timing_footer() {
-		if( extension_loaded('newrelic') ) {
-			print newrelic_get_browser_timing_footer( TRUE );
+		if ( extension_loaded( 'newrelic' ) ) {
+			print newrelic_get_browser_timing_footer( true );
 		}
 	}
 ?>
