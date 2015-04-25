@@ -41,11 +41,19 @@ jQuery(function() {
 	}
 	jQuery(window).on('resize',function() {
 		jQuery("div.redmond-dialog-window").each(function() {
-			jQuery(this).css({
-				'height': ( jQuery(window).height() * 0.9 ),
-				'overflow': 'hidden',
-			});
+		var obj = this;
+		jQuery(this).css({
+			'height': function() {
+				if ( jQuery(obj).height() > ( jQuery(window).height() * 0.9 ) ) {
+					return ( jQuery(window).height() * 0.9 )
+				}
+				else {
+					jQuery(obj).height()
+				}
+			},
+			'overflow': 'hidden',
 		});
+	});
 	});
 });
 
