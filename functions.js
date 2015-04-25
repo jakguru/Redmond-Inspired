@@ -43,12 +43,17 @@ jQuery(function() {
 		jQuery("div.redmond-dialog-window").each(function() {
 		var obj = this;
 		jQuery(this).css({
-			'height': function() {
+			'padding-bottom': function() {
 				if ( jQuery(obj).height() > ( jQuery(window).height() * 0.9 ) ) {
-					return ( jQuery(window).height() * 0.9 )
+					return 20;
 				}
 				else {
-					jQuery(obj).height()
+					0;
+				}	
+			},
+			height: function() {
+				if ( jQuery(obj).height() > ( jQuery(window).height() * 0.9 ) ) {
+					return ( jQuery(window).height() * 0.9 )
 				}
 			},
 			'overflow': 'hidden',
