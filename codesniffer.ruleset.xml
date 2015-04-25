@@ -12,5 +12,7 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
 		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
+		<exclude name="WordPress.VIP.AdminBarRemoval.RemovalDetected" />
+		<exclude name="WordPress.XSS.EscapeOutput.OutputNotEscaped" />
 	</rule>
 </ruleset>

@@ -1,5 +1,5 @@
 <?php
-	defined('ABSPATH') || die( 'Sorry, but you cannot access this page directly.' );
+	defined( 'ABSPATH' ) || die( 'Sorry, but you cannot access this page directly.' );
 
 	function redmond_getpost_callback() {
 		$POST = stripslashes_deep( $_POST );
@@ -22,18 +22,18 @@
 			'id' => '1',
 			'data' => json_encode( $res_data ),
 		);
-		$xmlResponse = new WP_Ajax_Response($response);
+		$xmlResponse = new WP_Ajax_Response( $response );
 		$xmlResponse->send();
 	}
 
-	function redmond_add_comments_to_content( $content , $post_id ) {
+	function redmond_add_comments_to_content( $content, $post_id ) {
 		$content = '<article>' . $content . "\r\n";
 		if ( comments_open( $post_id ) && get_comments_number( $post_id ) > 0 ) {
 			$comments = get_comments( array( 'post_id' => $post_id, 'status' => 'approve' ) );
 			$content .= '<hr />' . "\r\n";
-			$content .= '<h4>' . __('Comments:',RTEXTDOMAIN) . '</h4>' . "\r\n";
+			$content .= '<h4>' . __( 'Comments:', RTEXTDOMAIN ) . '</h4>' . "\r\n";
 			$content .= '<ul class="list-group">' . "\r\n";
-			foreach ($comments as $comment) {
+			foreach ( $comments as $comment ) {
 				$content .= '<li class="list-group-item">' . "\r\n";
 				$content .= '<a href="' . esc_url( $comment->comment_author_url ) . '" target="_blank">' . get_avatar( $comment->comment_author_email , 64 ) . '</a>' . "\r\n";
 				$content .= '<h5 class="list-group-item-heading">' . esc_html( $comment->comment_author ) . '</h5>' . "\r\n";
@@ -47,57 +47,57 @@
 	}
 
 	function redmond_getarchive_callback() {
-		$_POST = stripslashes_deep( $_POST );
+		$POST = stripslashes_deep( $_POST );
 		$response = array(
 			'what' => 'login',
 			'action' => 'login',
 			'id' => '1',
-			'data' => json_encode( $_POST ),
+			'data' => json_encode( $POST ),
 		);
 		$data = array(
 			'html' => '',
 			'breadcrumbs' => '',
 			'menu' => array(),
-			'title' => __('Archive',RTEXTDOMAIN),
+			'title' => __( 'Archive', RTEXTDOMAIN ),
 			'icon' => get_theme_mod( 'redmond_default_documents_icon' , REDMONDURI . '/resources/docs.ico' ),
-			'taskname' => NULL,
+			'taskname' => null,
 		);
-		switch ($_POST['taxonomy']) {
+		switch ( $POST['taxonomy'] ) {
 			case 'tags':
-				$data['html'] = redmond_generate_folder_shortcuts_from_tag( $_POST['archive'] );
+				$data['html'] = redmond_generate_folder_shortcuts_from_tag( $POST['archive'] );
 				$data['menu']['close'] = array(
-					'title' => __('Close',RTEXTDOMAIN),
+					'title' => __( 'Close', RTEXTDOMAIN ),
 					'onclick' => 'redmond_close_this(this)',
 				);
-				$data['taskname'] = 'tag_archive_' . esc_html( $_POST['archive'] );
-				$data['title'] = ( $_POST['archive'] !== 'all' ) ? get_tag( $_POST['archive'] )->name : __('All Tags',RTEXTDOMAIN);
+				$data['taskname'] = 'tag_archive_' . esc_html( $POST['archive'] );
+				$data['title'] = ( 'all' !== $POST['archive'] ) ? get_tag( $POST['archive'] )->name : __( 'All Tags', RTEXTDOMAIN );
 				break;
 
 			default:
-				$data['html'] = redmond_generate_folder_shortcuts_from_category( $_POST['archive'] );
+				$data['html'] = redmond_generate_folder_shortcuts_from_category( $POST['archive'] );
 				$data['menu']['close'] = array(
-					'title' => __('Close',RTEXTDOMAIN),
+					'title' => __( 'Close', RTEXTDOMAIN ),
 					'onclick' => 'redmond_close_this(this)',
 				);
-				$data['title'] = ( $_POST['archive'] !== 'all' ) ? get_the_category_by_ID( $_POST['archive'] ) : __('All Categories',RTEXTDOMAIN);
-				$data['taskname'] = 'cat_archive_' . esc_html( $_POST['archive'] );
+				$data['title'] = ( 'all' !== $POST['archive'] ) ? get_the_category_by_ID( $POST['archive'] ) : __( 'All Categories', RTEXTDOMAIN );
+				$data['taskname'] = 'cat_archive_' . esc_html( $POST['archive'] );
 				break;
 		}
 		$response['data'] = json_encode( $data );
-		$xmlResponse = new WP_Ajax_Response($response);
+		$xmlResponse = new WP_Ajax_Response( $response );
 		$xmlResponse->send();
 	}
 
 	function redmond_getsearch_callback() {
-		$_POST = stripslashes_deep( $_POST );
-		$search = (array_key_exists('search', $_POST)) ? $_POST['search']:'';
+		$POST = stripslashes_deep( $_POST );
+		$search = ( array_key_exists( 'search', $POST ) ) ? $POST['search'] : '';
 		$response = array(
 			'what' => 'login',
 			'action' => 'login',
 			'id' => '1',
-			'data' => json_encode(array('html'=>redmond_generate_search_results( $search ))),
+			'data' => json_encode( array( 'html' => redmond_generate_search_results( $search ) ) ),
 		);
-		$xmlResponse = new WP_Ajax_Response($response);
+		$xmlResponse = new WP_Ajax_Response( $response );
 		$xmlResponse->send();
 	}
 ?>
