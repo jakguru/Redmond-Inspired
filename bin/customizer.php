@@ -1,5 +1,5 @@
 <?php
-	defined('ABSPATH') || die('Sorry, but you cannot access this page directly.');
+	defined( 'ABSPATH' ) || die( 'Sorry, but you cannot access this page directly.' );
 
 	function redmond_customize_register( $wp_customize ) {
 		redmond_load_customizer_sections( $wp_customize );

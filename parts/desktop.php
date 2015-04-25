@@ -1,5 +1,5 @@
 <?php
-	defined('ABSPATH') || die('Sorry, but you cannot access this page directly.');
+	defined( 'ABSPATH' ) || die( 'Sorry, but you cannot access this page directly.' );
 	if ( have_posts() ) :
 		while ( have_posts() ) : the_post();
 	?>
