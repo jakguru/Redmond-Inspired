@@ -1,6 +1,6 @@
 # Redmond Inspired
 
-[![Build Status](https://travis-ci.org/bdbjack/Redmond-Inspired.svg)](https://travis-ci.org/bdbjack/Redmond-Inspired)
+[![Build Status](https://travis-ci.org/bdbjack/Redmond-Inspired.svg?branch=master)](https://travis-ci.org/bdbjack/Redmond-Inspired)
 
 ---------------------------------------
 
