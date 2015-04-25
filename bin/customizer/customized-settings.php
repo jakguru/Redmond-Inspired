@@ -1,5 +1,5 @@
 <?php
-	defined('ABSPATH') || die('Sorry, but you cannot access this page directly.');
+	defined( 'ABSPATH' ) || die( 'Sorry, but you cannot access this page directly.' );
 	$redmond_customizer_settings = array(
 		array(
 			'name' => 'redmond_default_icon',
@@ -125,8 +125,8 @@
 
 	function redmond_load_customizer_settings( $wp_customize ) {
 		global $redmond_customizer_settings;
-		foreach ($redmond_customizer_settings as $setting) {
-			$wp_customize->add_setting( $setting['name'] , array( 'default' => $setting['default'] , 'transport' => $setting['transport'] ) );
+		foreach ( $redmond_customizer_settings as $setting ) {
+			$wp_customize->add_setting( $setting['name'], array( 'default' => $setting['default'], 'transport' => $setting['transport'] ) );
 		}
 	}
 ?>

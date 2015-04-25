@@ -1,5 +1,5 @@
 <?php
-	defined('ABSPATH') || die('Sorry, but you cannot access this page directly.');
+	defined( 'ABSPATH' ) || die( 'Sorry, but you cannot access this page directly.' );
 
 	function redmond_customize_register( $wp_customize ) {
 		redmond_load_customizer_sections( $wp_customize );
@@ -20,14 +20,14 @@
 
 	function redmond_get_post_icon( $post_id ) {
 		global $wpdb;
-		if( has_post_thumbnail( $post_id ) ) {
+		if ( has_post_thumbnail( $post_id ) ) {
 			$thumb_id = get_post_thumbnail_id( $post_id );
 			$img_src = wp_get_attachment_image_src( $thumb_id , 'thumbnail' );
 			return $img_src[0];
 		}
 		else {
-			$postType = $wpdb->get_var( $wpdb->prepare("SELECT post_type FROM " . $wpdb->prefix . "posts WHERE ID = %d",$post_id) );
-			if( $postType == 'nav_menu_item' ) {
+			$postType = $wpdb->get_var( $wpdb->prepare( 'SELECT post_type FROM ' . $wpdb->prefix . 'posts WHERE ID = %d', $post_id ) );
+			if ( 'nav_menu_item' == $postType ) {
 				return get_theme_mod( 'redmond_external_page_icon' , REDMONDURI . '/resources/external.ico' );
 			}
 			else {
@@ -130,9 +130,9 @@
 			),
 		);
 		$html = '';
-		foreach ($icons as $icon) {
+		foreach ( $icons as $icon ) {
 			$html .= '<link rel="' . $icon['rel'] . '" sizes="' . $icon['sizes'] . '" type="' . $icon['type'] . '" href="' . $icon['href'] . '" />' . "\r\n";
 		}
-		print $html;
+		print wp_kses( $html, array( 'link' ) );
 	}
 ?>
