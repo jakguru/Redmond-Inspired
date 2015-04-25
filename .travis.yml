@@ -1,23 +1,12 @@
-# Travis CI (MIT License) configuration file for the Underscores WordPress theme.
-# @link https://travis-ci.org/
+# Travis CI Configuration File
 
-# For use with the Underscores WordPress theme.
-# @link https://github.com/Automattic/_s
-
-# Declare project language.
-# @link http://about.travis-ci.org/docs/user/languages/php/
+# Tell Travis CI we're using PHP
 language: php
 
-# Declare versions of PHP to use. Use one decimal max.
+# Versions of PHP to test against
 php:
-  # aliased to a recent 5.5.x version
-  - "5.5"
-  # aliased to a recent 5.4.x version
-  - "5.4"
-  # aliased to a recent 5.3.x version
-  - "5.3"
-  # Current $required_php_version for WordPress: 5.2.4
-  - "5.2"
+	- 5.4
+	- 5.5
 
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
@@ -26,6 +15,10 @@ env:
   # @link https://github.com/WordPress/WordPress
   - WP_VERSION=master WP_MULTISITE=0
   - WP_VERSION=master WP_MULTISITE=1
+  # WordPress 4.2
+  # @link https://github.com/WordPress/WordPress/tree/4.2-branch
+  - WP_VERSION=4.1 WP_MULTISITE=0
+  - WP_VERSION=4.1 WP_MULTISITE=1
   # WordPress 4.1
   # @link https://github.com/WordPress/WordPress/tree/4.1-branch
   - WP_VERSION=4.1 WP_MULTISITE=0
@@ -42,8 +35,14 @@ matrix:
   include:
     - php: 5.6
       env: WP_VERSION=master
+    - php: hhvm
+      env: WP_VERSION=master
+    - php: nightly
+      env: WP_VERSION=master
   allow_failures:
     - php: 5.6
+    - php: hhvm
+	- php: nightly
   fast_finish: true
 
 # Use this to prepare the system to install prerequisites or dependencies.
@@ -103,7 +102,7 @@ script:
   # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
   # --standard: Use WordPress as the standard.
   # --extensions: Only sniff PHP files.
-  - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
+  # - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
