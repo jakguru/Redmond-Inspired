@@ -39,6 +39,14 @@ jQuery(function() {
 		find_window_on_top();
 		break;
 	}
+	jQuery(window).on('resize',function() {
+		jQuery("div.redmond-dialog-window").each(function() {
+			jQuery(this).css({
+				'height': ( jQuery(window).height() * 0.9 ),
+				'overflow': 'hidden',
+			});
+		});
+	});
 });
 
 function checkOpenWindows() {
