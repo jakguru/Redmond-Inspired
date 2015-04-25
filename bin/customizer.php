@@ -15,7 +15,12 @@
 		$html .= '		background-position: center;' . "\r\n";
 		$html .= '	}' . "\r\n";
 		$html .= '</style>' . "\r\n";
-		print $html;
+		print wp_kses( $html , array(
+			'style' => array(
+				'type' => true,
+				'id' => true,
+			),
+		) );
 	}
 
 	function redmond_get_post_icon( $post_id ) {
