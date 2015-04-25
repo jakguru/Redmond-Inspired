@@ -39,13 +39,21 @@
 
 	function redmond_new_relic_timing_header() {
 		if ( extension_loaded( 'newrelic' ) ) {
-			print newrelic_get_browser_timing_header( true );
+			print wp_kses( newrelic_get_browser_timing_header( true ) , array(
+				'script' => array(
+					'type' => true,
+				),
+			) );
 		}
 	}
 
 	function redmond_new_relic_timing_footer() {
 		if ( extension_loaded( 'newrelic' ) ) {
-			print newrelic_get_browser_timing_footer( true );
+			print wp_kses( newrelic_get_browser_timing_footer( true ) , array(
+				'script' => array(
+					'type' => true,
+				),
+			) );
 		}
 	}
 ?>

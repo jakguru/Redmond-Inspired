@@ -76,7 +76,7 @@
 								?>
 									<a href="<?php print esc_url( get_permalink( $post->ID ) ); ?>" class="post-link" data-post-id="<?php print intval( $post->ID ); ?>" title="<?php print esc_html( $post->post_title ); ?>">
 										<img src="<?php print esc_url( redmond_get_post_icon( $post->ID ) ); ?>" />
-										<?php print esc_html( substr( esc_html( $post->post_title ) ) , 0 , 20 ); ?>
+										<?php print esc_html( substr( $post->post_title, 0, 20 ) ); ?>
 										<?php if ( strlen( esc_html( $post->post_title ) ) > 20 ) { print '...'; } ?>
 									</a>
 								<?php
@@ -284,6 +284,6 @@ if ( current_user_can( 'publish_posts' ) ) {
 		<?php
 		redmond_generate_folder_shortcuts_from_menu( 'desktop' );
 		//print('<pre>');
-		//print_r( $current_user );
+		//print_r( wp_kses_allowed_html( 'post' ) );
 		//print('</pre>');
 		?>
