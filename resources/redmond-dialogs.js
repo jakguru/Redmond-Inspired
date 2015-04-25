@@ -96,6 +96,20 @@ function redmond_window( objid , title , content , filecommands , canResize , dr
 		processes[objid].dialog('moveToTop');
 		find_window_on_top();
 	}
+	jQuery("div.redmond-dialog-window").each(function() {
+		var obj = this;
+		jQuery(this).css({
+			'height': function() {
+				if ( jQuery(obj).height() > ( jQuery(window).height() * 0.9 ) ) {
+					return ( jQuery(window).height() * 0.9 )
+				}
+				else {
+					jQuery(obj).height()
+				}
+			},
+			'overflow': 'hidden',
+		});
+	});
 }
 
 function redmond_filecommands_to_html( filecommands ) {

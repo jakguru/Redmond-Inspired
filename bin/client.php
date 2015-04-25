@@ -363,7 +363,7 @@
 			}
 			foreach ( $cats as $cat ) {
 				$link = array(
-					'url' => wpcom_vip_get_term_link( $cat->term_id , 'post_tag' ),
+					'url' => get_term_link( $cat->term_id , 'post_tag' ),
 					'type' => 'tags',
 					'id' => $cat->term_id,
 					'title' => substr( $cat->name, 0,20 ),

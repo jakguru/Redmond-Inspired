@@ -318,11 +318,12 @@ p.current-user>img {
 	background-color: #d4d0c8;	
 	min-height: 20px;
 	border: solid 1px;
-	border-top-color: #d4d0c8;
-	border-left-color: #d4d0c8;
+	border-top-color: #808080;
+	border-left-color: #808080;
 	border-right-color: #808080;
 	border-bottom-color: #808080;
 	display: none;
+	bottom: 0;
 }
 
 ul.archives-inner-wrapper {
@@ -382,6 +383,7 @@ div.redmond-dialog-window {
 	max-width: 100%;
 	max-height: 100%;
 	position: absolute !important;
+	padding-bottom: 20px;
 }
 
 div.redmond-dialog-window>.ui-dialog-content, div.redmond-dialog-window>.ui-dialog-titlebar {
@@ -450,6 +452,8 @@ div.redmond-dialog-window>div.ui-dialog-content {
 	border-right-color: #808080;
 	border-bottom-color: #808080;
 	min-height: 20px !important;
+	position: relative;
+	height: 100% !important;
 }
 
 .ui-resizable-e {
