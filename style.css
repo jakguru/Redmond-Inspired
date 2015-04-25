@@ -318,11 +318,12 @@ p.current-user>img {
 	background-color: #d4d0c8;	
 	min-height: 20px;
 	border: solid 1px;
-	border-top-color: #d4d0c8;
-	border-left-color: #d4d0c8;
+	border-top-color: #808080;
+	border-left-color: #808080;
 	border-right-color: #808080;
 	border-bottom-color: #808080;
 	display: none;
+	bottom: 0;
 }
 
 ul.archives-inner-wrapper {
