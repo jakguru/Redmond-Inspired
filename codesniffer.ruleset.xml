@@ -14,5 +14,6 @@
 		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
 		<exclude name="WordPress.VIP.AdminBarRemoval.RemovalDetected" />
 		<exclude name="WordPress.XSS.EscapeOutput.OutputNotEscaped" />
+		<exclude name="WordPress.XSS.EscapeOutput.OutputNotSanitized" />
 	</rule>
 </ruleset>
