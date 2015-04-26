@@ -383,7 +383,6 @@ div.redmond-dialog-window {
 	max-width: 100%;
 	max-height: 100%;
 	position: absolute !important;
-	padding-bottom: 20px;
 }
 
 div.redmond-dialog-window>.ui-dialog-content, div.redmond-dialog-window>.ui-dialog-titlebar {
@@ -451,7 +450,7 @@ div.redmond-dialog-window>div.ui-dialog-content {
 	border-left-color: #d4d0c8;
 	border-right-color: #808080;
 	border-bottom-color: #808080;
-	min-height: 20px !important;
+	min-height: 50px !important;
 	position: relative;
 	height: 100% !important;
 }
@@ -534,6 +533,7 @@ div.file-bar>ul>li>ul {
 	border-left-color: #d4d0c8;
 	border-right-color: #808080;
 	border-bottom-color: #808080;
+	z-index: 1000;
 }
 
 div.file-bar>ul>li:hover>ul, div.file-bar>ul>li:focus>ul, div.file-bar>ul>li:active>ul {

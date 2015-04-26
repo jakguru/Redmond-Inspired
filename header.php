@@ -95,6 +95,10 @@
 									<img src="<?php print esc_url( get_theme_mod( 'redmond_default_documents_icon' , REDMONDURI . '/resources/docs.ico' ) ); ?>" />
 									<?php esc_html_e( 'Tags', RTEXTDOMAIN ); ?>
 								</a>
+								<a id="authors-start-menu-link">
+									<img src="<?php print esc_url( get_theme_mod( 'redmond_default_documents_icon' , REDMONDURI . '/resources/docs.ico' ) ); ?>" />
+									<?php esc_html_e( 'Authors', RTEXTDOMAIN ); ?>
+								</a>
 								<?php
 }
 if ( current_user_can( 'publish_posts' ) ) {
