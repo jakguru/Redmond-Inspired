@@ -364,7 +364,7 @@ function open_redmond_authors_window( author ) {
 									break;
 
 								default:
-									open_category_as_redmond_dialog(this);
+									open_redmond_authors_window( jQuery(this).attr('data-author-id') );
 									break;
 							}
 						}

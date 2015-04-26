@@ -492,6 +492,75 @@
 		return $html;
 	}
 
+	function redmond_generate_folder_shortcuts_from_author( $author, $max_cols = 10 ) {
+		$html = '';
+		$tdata = array();
+		$row = 1;
+		$count = 1;
+		$colcount = 0;
+		if ( 'all' == $author ) {
+			$authors = get_users( array(
+				'who' => 'authors',
+			) );
+			$rows_needed = ceil( count( $authors ) / $max_cols );
+			while ( $row <= $rows_needed ) {
+				$tdata[ 'row_' . $row ] = array();
+				$row ++;
+			}
+			foreach ( $authors as $author ) {
+				$link = array(
+					'url' => get_author_posts_url( $author->ID ),
+					'type' => 'author',
+					'id' => $author->ID,
+					'title' => substr( esc_html( $author->data->display_name ) , 0 , 20 ),
+					'fulltitle' => esc_html( $author->data->display_name ),
+					'icon' => esc_url( '//www.gravatar.com/avatar/' . md5( strtolower( $author->data->user_email ) ) . '?s=64&d=mm&r=g' ),
+				);
+				array_push( $tdata[ 'row_' . $count ], $link );
+				if ( $colcount < $max_cols ) {
+					$colcount ++;
+				}
+				else {
+					$colcount = 0;
+					$count ++;
+				}
+			}
+			$html .= redmond_make_folder_list_into_table( $tdata , 'authors' , false );
+		}
+		else {
+			$author = intval( $author );
+			$posts = get_posts( array(
+				'author' => $author,
+				'posts_per_page' => 50,
+			) );
+			$rows_needed = ceil( count( $posts ) / $max_cols );
+			while ( $row <= $rows_needed ) {
+				$tdata[ 'row_' . $row ] = array();
+				$row ++;
+			}
+			foreach ( $posts as $post ) {
+				$link = array(
+					'url' => get_permalink( $post->ID ),
+					'type' => 'regular',
+					'id' => $post->ID,
+					'title' => substr( esc_html( get_the_title( $post->ID ) ) , 0 , 20 ),
+					'fulltitle' => esc_html( get_the_title( $post->ID ) ),
+					'icon' => redmond_get_post_icon( $post->ID ),
+				);
+				array_push( $tdata[ 'row_' . $count ], $link );
+				if ( $colcount < $max_cols ) {
+					$colcount ++;
+				}
+				else {
+					$colcount = 0;
+					$count ++;
+				}
+			}
+			$html .= redmond_make_folder_list_into_table( $tdata , 'author_' . intval( $author ) . '_posts' , false );
+		}
+		return $html;
+	}
+
 	function redmond_make_folder_list_into_table( $list, $id, $print = true ) {
 		$maxCells = 0;
 		foreach ( $list as $row => $cells ) {
@@ -517,6 +586,10 @@
 
 			case 'tags':
 				$html .= ' data-category-id="' . intval( $cell['id'] ) . '"';
+				break;
+
+			case 'author':
+				$html .= ' data-author-id="' . intval( $cell['id'] ) . '"';
 				break;
 		}
 		$html .= '>' . "\r\n";
