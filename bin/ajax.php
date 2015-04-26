@@ -100,4 +100,25 @@
 		$xmlResponse = new WP_Ajax_Response( $response );
 		$xmlResponse->send();
 	}
+
+	function redmond_getauthor_callback() {
+		$POST = stripslashes_deep( $_POST );
+		$response = array(
+			'what' => 'login',
+			'action' => 'login',
+			'id' => '1',
+			'data' => json_encode( $POST ),
+		);
+		$data = array(
+			'html' => '',
+			'breadcrumbs' => '',
+			'menu' => array(),
+			'title' => __( 'Author', RTEXTDOMAIN ),
+			'icon' => get_theme_mod( 'redmond_default_documents_icon' , REDMONDURI . '/resources/docs.ico' ),
+			'taskname' => null,
+		);
+		$response['data'] = json_encode( $data );
+		$xmlResponse = new WP_Ajax_Response( $response );
+		$xmlResponse->send();
+	}
 ?>

@@ -62,6 +62,8 @@ add_action( 'wp_ajax_getarchive','redmond_getarchive_callback' );
 add_action( 'wp_ajax_nopriv_getarchive','redmond_getarchive_callback' );
 add_action( 'wp_ajax_getsearch','redmond_getsearch_callback' );
 add_action( 'wp_ajax_nopriv_getsearch','redmond_getsearch_callback' );
+add_action( 'wp_ajax_getauthor','redmond_getauthor_callback' );
+add_action( 'wp_ajax_nopriv_getauthor','redmond_getauthor_callback' );
 add_action( 'wp_footer','redmond_set_info_cookies' );
 remove_action( 'wp_head', 'feed_links_extra' );
 remove_action( 'wp_head', 'feed_links' );
