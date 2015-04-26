@@ -404,7 +404,18 @@ function do_redmond_error_window( message ) {
 }
 
 function redmond_comment_field( postid ) {
-	do_redmond_error_window('Sorry, that function is not working yet.');
+	html = '<p>Test Content</p>';
+	redmond_window('comment_for_'+postid,redmond_terms.errTitle,html,null,false,true,redmond_terms.errorIcon);
+	processes.error.css({
+		'overflow-y': 'hidden',
+		background:'#d4d0c8',
+		'background-color':'#d4d0c8',
+		padding: 10,
+		'max-width': 700,
+	});
+	processes.error.find('div.file-bar').css({
+		display:'none',
+	});
 }
 
 function redmond_share_post( postid ) {

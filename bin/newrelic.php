@@ -39,7 +39,13 @@
 
 	function redmond_new_relic_timing_header() {
 		if ( extension_loaded( 'newrelic' ) ) {
-			print wp_kses( newrelic_get_browser_timing_header( true ) , array(
+			print wp_kses( "<script type='text/javascript'>" , array(
+				'script' => array(
+					'type' => true,
+				),
+			) );
+			print esc_js( newrelic_get_browser_timing_header( false ) );
+			print wp_kses( '</script>' . "\r\n" , array(
 				'script' => array(
 					'type' => true,
 				),
@@ -49,7 +55,13 @@
 
 	function redmond_new_relic_timing_footer() {
 		if ( extension_loaded( 'newrelic' ) ) {
-			print wp_kses( newrelic_get_browser_timing_footer( true ) , array(
+			print wp_kses( "<script type='text/javascript'>" , array(
+				'script' => array(
+					'type' => true,
+				),
+			) );
+			print esc_js( newrelic_get_browser_timing_footer( false ) );
+			print wp_kses( '</script>' . "\r\n" , array(
 				'script' => array(
 					'type' => true,
 				),
