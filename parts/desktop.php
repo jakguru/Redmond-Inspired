@@ -3,7 +3,7 @@
 	if ( have_posts() ) :
 		while ( have_posts() ) : the_post();
 	?>
-	<div id="post_<?php print intval( $post->ID ); ?>_content">
+	<div id="post_<?php print intval( $post->ID ); ?>_content" class="initial_content">
 		<article style="padding: 10px;">
 			<?php the_content(); ?>
 			<?php

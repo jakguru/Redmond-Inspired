@@ -788,3 +788,7 @@ div.search-panel h4>img {
 	margin-right: 10px;
 	margin-top: -2px;
 }
+
+div.initial_content {
+	display: none;
+}
