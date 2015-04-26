@@ -117,6 +117,13 @@
 			'icon' => get_theme_mod( 'redmond_default_documents_icon' , REDMONDURI . '/resources/docs.ico' ),
 			'taskname' => null,
 		);
+		$data['menu']['close'] = array(
+			'title' => __( 'Close', RTEXTDOMAIN ),
+			'onclick' => 'redmond_close_this(this)',
+		);
+		$data['title'] = ( 'all' !== $POST['author'] ) ? get_userdata( intval( $POST['author'] ) )->display_name : __( 'All Authors', RTEXTDOMAIN );
+		$data['taskname'] = 'author_archive_' . esc_html( $POST['author'] );
+		$data['html'] = redmond_generate_folder_shortcuts_from_author( $POST['author'] );
 		$response['data'] = json_encode( $data );
 		$xmlResponse = new WP_Ajax_Response( $response );
 		$xmlResponse->send();
