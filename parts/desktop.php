@@ -18,12 +18,12 @@
 			?>
 				<li class="list-group-item">
 					<a href="<?php print esc_url( $comment->comment_author_url ); ?>">
-						<?php get_avatar( $comment->comment_author_email , 64 ); ?>
+						<?php print get_avatar( $comment->comment_author_email , 64 ); ?>
 					</a>
 					<h5 class="list-group-item-heading">
 						<?php print esc_html( $comment->comment_author ); ?>
-						<?php print esc_html( wpautop( $comment->comment_content ) ); ?>
 					</h5>
+					<?php print wp_kses( wpautop( $comment->comment_content ) , wp_kses_allowed_html( 'post' ) ); ?>
 				</li>
 			<?php
 				}
