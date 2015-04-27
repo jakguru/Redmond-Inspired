@@ -268,7 +268,7 @@
 				'url' => $item->url,
 				'type' => ( $item->object == 'custom' ) ? 'custom' : 'regular',
 				'id' => $item->object_id,
-				'title' => substr( esc_html( get_the_title( $item->object_id ) ) , 0 , 20 ),
+				'title' => substr( html_entity_decode( get_the_title( $item->object_id ) ) , 0 , 20 ),
 				'fulltitle' => esc_html( get_the_title( $item->object_id ) ),
 				'icon' => redmond_get_post_icon( $item->object_id ),
 			);
@@ -330,7 +330,7 @@
 					'url' => get_permalink( $post->ID ),
 					'type' => 'regular',
 					'id' => $post->ID,
-					'title' => substr( esc_html( get_the_title( $post->ID ) ) , 0 , 20 ),
+					'title' => substr( html_entity_decode( get_the_title( $post->ID ) ) , 0 , 20 ),
 					'fulltitle' => esc_html( get_the_title( $post->ID ) ),
 					'icon' => redmond_get_post_icon( $post->ID ),
 				);
@@ -395,7 +395,7 @@
 					'url' => get_permalink( $post->ID ),
 					'type' => 'regular',
 					'id' => $post->ID,
-					'title' => substr( esc_html( get_the_title( $post->ID ) ) , 0 , 20 ),
+					'title' => substr( html_entity_decode( get_the_title( $post->ID ) ) , 0 , 20 ),
 					'fulltitle' => esc_html( get_the_title( $post->ID ) ),
 					'icon' => redmond_get_post_icon( $post->ID ),
 				);
@@ -461,7 +461,7 @@
 						'url' => get_permalink( $post->ID ),
 						'type' => 'regular',
 						'id' => $post->ID,
-						'title' => substr( esc_html( get_the_title( $post->ID ) ) , 0 , 20 ),
+						'title' => substr( html_entity_decode( get_the_title( $post->ID ) ) , 0 , 20 ),
 						'fulltitle' => esc_html( get_the_title( $post->ID ) ),
 						'icon' => redmond_get_post_icon( $post->ID ),
 					);
@@ -512,7 +512,7 @@
 					'url' => get_author_posts_url( $author->ID ),
 					'type' => 'author',
 					'id' => $author->ID,
-					'title' => substr( esc_html( $author->data->display_name ) , 0 , 20 ),
+					'title' => substr( html_entity_decode( $author->data->display_name ) , 0 , 20 ),
 					'fulltitle' => esc_html( $author->data->display_name ),
 					'icon' => esc_url( '//www.gravatar.com/avatar/' . md5( strtolower( $author->data->user_email ) ) . '?s=64&d=mm&r=g' ),
 				);
@@ -543,7 +543,7 @@
 					'url' => get_permalink( $post->ID ),
 					'type' => 'regular',
 					'id' => $post->ID,
-					'title' => substr( esc_html( get_the_title( $post->ID ) ) , 0 , 20 ),
+					'title' => substr( html_entity_decode( get_the_title( $post->ID ) ) , 0 , 20 ),
 					'fulltitle' => esc_html( get_the_title( $post->ID ) ),
 					'icon' => redmond_get_post_icon( $post->ID ),
 				);
